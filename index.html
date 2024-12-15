@@ -8,15 +8,31 @@
     <script type="text/jsx">
       const domNode = document.getElementById('app');
 
-      function Header () {
-        return <h1>Develop. Preview. Ship.</h1>;
+      function createTitle (title) {
+        if (title) {
+          return title;
+        } else {
+          return 'Default Title';
+        }
+      }
+
+      function Header ({title}) {
+        return <h1>{createTitle(title)}</h1>;
       }
 
       function HomePage () {
+
+        const names = ["Ada Lovelace", "Grace Hopper", "Marie Curie"];
+
         return (
           <div>
-            <Header />
-            <p>Welcome to the homepage!</p>
+            <Header title="React" />
+            <Header title="A new title" />
+            <ul>
+              {names.map((name) => (
+                <li key={name}>{name}</li>
+              ))}
+            </ul>
           </div>
         );
       }
